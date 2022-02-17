@@ -6,17 +6,19 @@
 
 <script lang="ts">
 import ChatMessage from "~/components/atoms/ChatMessage.vue"
-import Message from "~/models/message"
+import { mapGetters } from 'vuex'
 
 export default {
+    mounted() {
+        console.log(this.messages)
+    },
     data() {
-        return {
-            messages: [
-                new Message(new Date(), "Joe", "Hey bob!"),
-                new Message(new Date(), "Bob", "Hey Joe, what's up?"),
-                new Message(new Date(), "Joe", "Not much bro!"),
-            ],
-        }
+        return {}
+    },
+    computed: {
+        ...mapGetters({
+            messages: 'getMessages'
+        })
     },
     components: {
         ChatMessage
